@@ -8,8 +8,7 @@
     "dev:watch": "npm run dev:build && budo index.js:dist.js --debug --verbose --live --port 9000 -- -r ./index.js:three-vr -t browserify-shim | garnish",
     "dev:build": "browserify -r ./index.js:three-vr -o dist.js --debug",
     "dist": "npm run release",
-    "release": "browserify -r ./index.js:three-vr -o dist.js",
-    "postinstall": "npm run dev:build"
+    "release": "browserify -r ./index.js:three-vr -o dist.js"
   },
   "repository": "cvan/three-vr-browserify",
   "author": "Chris Van",
