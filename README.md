@@ -1,6 +1,6 @@
-# three-vr-dev
+# three-vr-browserify
 
-three.js + VR effect + VR controls
+Browserify-shimmed modules for three.js + VR effect + VR controls.
 
 ### Sources
 

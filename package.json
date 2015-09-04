@@ -1,11 +1,44 @@
 {
-  "name": "three-vr-dev",
+  "name": "three-vr-browserify",
   "version": "1.0.0",
-  "description": "three.js + VR effect + VR controls",
-  "main": "three.js",
+  "description": "Browserify-shimmed modules for three.js + VR effect + VR controls",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run dev:watch",
+    "dev:watch": "npm run dev:build && budo index.js:dist.js --debug --verbose --live --port 9000 -- -r ./index.js:three-vr -t browserify-shim | garnish",
+    "dev:build": "browserify -r ./index.js:three-vr -o dist.js --debug",
+    "dist": "npm run release",
+    "release": "browserify -r ./index.js:three-vr -o dist.js",
+    "postinstall": "npm run dev:build"
   },
+  "repository": "cvan/three-vr-browserify",
   "author": "Chris Van",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "three",
+    "three.js",
+    "vr",
+    "webvr"
+  ],
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "three": "./vendor/three.js",
+    "three-vr-controls": "./vendor/VRControls.js",
+    "three-vr-effect": "./vendor/VREffect.js"
+  },
+  "browserify-shim": {
+    "three": "THREE",
+    "three-vr-controls": "THREE.VRControls",
+    "three-vr-effect": "THREE.VREffect"
+  },
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "browserify-shim": "^3.8.10",
+    "budo": "^4.2.1",
+    "garnish": "^2.3.0"
+  }
 }
