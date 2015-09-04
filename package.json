@@ -1,6 +1,6 @@
 {
   "name": "three-vr-browserify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Browserify-shimmed modules for three.js + VR effect + VR controls",
   "main": "index.js",
   "scripts": {
